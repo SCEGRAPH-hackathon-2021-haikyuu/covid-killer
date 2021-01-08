@@ -11,8 +11,8 @@ public class EnemyAI : MonoBehaviour
     public GameObject projectilePrefab;
     public bool followPlayer = false;
     public bool shootPlayer = false;
-    public float startTime = 2.0f;
-    private float timeToShoot;
+    public float startTime = 1.5f;
+    [SerializeField] private float timeToShoot;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +45,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (timeToShoot <= 0)
             {
-                Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Instantiate(projectilePrefab, transform.position, transform.rotation);
                 timeToShoot = startTime;
             }
             else
