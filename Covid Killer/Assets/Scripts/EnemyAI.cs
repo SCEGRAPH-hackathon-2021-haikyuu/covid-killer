@@ -6,21 +6,23 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     private NavMeshAgent enemy;
-    private Rigidbody rb;
     [SerializeField]private GameObject[] players;
     public GameObject projectilePrefab;
     public bool followPlayer = false;
     public bool shootPlayer = false;
-    public float startTime = 1.5f;
-    [SerializeField] private float timeToShoot;
+    public float startTimeShoot = 1.5f;
+    [SerializeField] private float timeToShoot = 0;
+
+    public int dmgTouch = 10;
+    public float startTimeTouch = 1f;
+    [SerializeField] private float timeToTouch = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         enemy = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
         players = GameObject.FindGameObjectsWithTag("Player");
-        timeToShoot = startTime;
+        timeToShoot = startTimeShoot;
     }
 
     // Update is called once per frame
@@ -46,7 +48,7 @@ public class EnemyAI : MonoBehaviour
             if (timeToShoot <= 0)
             {
                 Instantiate(projectilePrefab, transform.position, transform.rotation);
-                timeToShoot = startTime;
+                timeToShoot = startTimeShoot;
             }
             else
             {
@@ -55,12 +57,12 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    Transform GetClosestPlayer(GameObject[] players, Transform enemy)
+    Transform GetClosestPlayer(GameObject[] p, Transform e)
     {
         Transform bestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
-        Vector3 currentPosition = enemy.position;
-        foreach (GameObject potentialTarget in players)
+        Vector3 currentPosition = e.position;
+        foreach (GameObject potentialTarget in p)
         {
             Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
             float dSqrToTarget = directionToTarget.sqrMagnitude;
@@ -71,5 +73,21 @@ public class EnemyAI : MonoBehaviour
             }
         }
         return bestTarget;
+    }
+
+    private void OnCollisionStay(Collision col)
+    {
+        if (timeToTouch <= 0)
+        {
+            if (col.gameObject.CompareTag("Player"))
+            {
+                col.gameObject.GetComponent<Unit>().TakeDmg(dmgTouch);
+                timeToTouch = startTimeTouch;
+            }
+        }
+        else
+        {
+            timeToTouch -= Time.deltaTime;
+        }
     }
 }

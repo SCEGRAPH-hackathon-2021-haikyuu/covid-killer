@@ -14,8 +14,27 @@ public class Unit : MonoBehaviour
     {
         currentHp = maxHp;
 
-        if(hpBar != null)
+        if(gameObject.name == "Player1")
+        {
+            hpBar = GameObject.Find("P1 Health Bar").GetComponent<HpBar>();
+        }
+        else if (gameObject.name == "Player2")
+        {
+            hpBar = GameObject.Find("P2 Health Bar").GetComponent<HpBar>();
+        }
+
+        if (hpBar != null)
+        {
             hpBar.SetMaxHp(maxHp);
+        } 
+    }
+
+    void Update()
+    {
+        if (currentHp <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void TakeDmg(int dmg)
@@ -25,11 +44,6 @@ public class Unit : MonoBehaviour
             currentHp -= dmg;
             if (hpBar != null)
                 hpBar.SetHp(currentHp);
-        }
-        
-        if (currentHp <= 0)
-        {
-            Destroy(gameObject);
         }
     }
 }
