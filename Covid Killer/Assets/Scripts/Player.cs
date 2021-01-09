@@ -26,11 +26,11 @@ public class Player : MonoBehaviour {
         if(Input.GetKey(KeyCode.W)) { //foward
             transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
         } else if(Input.GetKey(KeyCode.S)) { //backpedal
-            transform.Translate(Vector3.back * movementSpeed *.75 * Time.deltaTime);
+            transform.Translate(Vector3.back * movementSpeed * Time.deltaTime);
         } else if(Input.GetKey(KeyCode.A)) { // strafe left
-            transform.Translate(Vector3.left * movementSpeed *.75 * Time.deltaTime);
+            transform.Translate(Vector3.left * movementSpeed * Time.deltaTime);
         } else if(Input.GetKey(KeyCode.D)) { //strafe right
-            transform.Translate(Vector3.right * movementSpeed *.75 * Time.deltaTime);
+            transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
         }
 
     }
