@@ -134,8 +134,8 @@ MonoBehaviour:
   players: []
   projectilePrefab: {fileID: 3165506352808809122, guid: 8d44f8ce94d073349ba891469db89342,
     type: 3}
-  followPlayer: 1
-  shootPlayer: 0
+  followPlayer: 0
+  shootPlayer: 1
   startTimeShoot: 1.5
   timeToShoot: 0
   dmgTouch: 5
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c2145addf4b21488718983b999301e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 50
+  maxHp: 100
   currentHp: 0
   hpBar: {fileID: 0}
 --- !u!54 &2407931327245595258
