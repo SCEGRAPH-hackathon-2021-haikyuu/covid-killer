@@ -7,6 +7,11 @@ public class Player : MonoBehaviour {
     public float movementSpeed;
     public float rotationSpeed;
 
+    public float startTimeShoot = 0.3f;
+    private float currentTimeShoot = 0f;
+    public GameObject syringePrefab;
+    private Vector3 lookDir = new Vector3(0,0,0);
+
     // Update is called once per frame
     void Update() {
         // make player face mouse
@@ -17,6 +22,7 @@ public class Player : MonoBehaviour {
         if(playerPlane.Raycast(rayline, out hitDist)) {
             Vector3 targetPoint = rayline.GetPoint(hitDist);
             Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
+            lookDir = (targetPoint - transform.position).normalized;
             targetRotation.x = 0;
             targetRotation.z = 0;
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
@@ -33,5 +39,19 @@ public class Player : MonoBehaviour {
             transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
         }
 
+        if (currentTimeShoot <= 0)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                GameObject projectile = Instantiate(syringePrefab, transform.position, transform.rotation);
+                projectile.GetComponent<Projectile>().SetShootDir(lookDir);
+                currentTimeShoot = startTimeShoot;
+            }
+        }
+        else
+        {
+            currentTimeShoot -= Time.deltaTime;
+        }
+        
     }
 }

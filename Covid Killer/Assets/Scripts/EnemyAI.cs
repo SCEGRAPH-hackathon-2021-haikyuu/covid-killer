@@ -17,6 +17,8 @@ public class EnemyAI : MonoBehaviour
     public float startTimeTouch = 1f;
     [SerializeField] private float timeToTouch = 0;
 
+    private Vector3 lookDir = new Vector3(0,0,0);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,7 @@ public class EnemyAI : MonoBehaviour
         if (players.Length > 0)
         {
             Transform closestPlayer = GetClosestPlayer(players, transform);
-            Vector3 lookDir = (closestPlayer.position - transform.position).normalized;
+            lookDir = (closestPlayer.position - transform.position).normalized;
             float angle = Mathf.Atan2(lookDir.x, lookDir.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f,angle,0f);
 
@@ -47,7 +49,8 @@ public class EnemyAI : MonoBehaviour
         {
             if (timeToShoot <= 0)
             {
-                Instantiate(projectilePrefab, transform.position, transform.rotation);
+                GameObject projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
+                projectile.GetComponent<Projectile>().SetShootDir(lookDir);
                 timeToShoot = startTimeShoot;
             }
             else
