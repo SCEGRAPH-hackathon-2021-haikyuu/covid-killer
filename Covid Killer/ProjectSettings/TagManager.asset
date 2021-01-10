@@ -12,6 +12,7 @@ TagManager:
   - Lose
   - WinScreen
   - LoseScreen
+  - Main Menu
   layers:
   - Default
   - TransparentFX

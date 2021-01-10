@@ -51,7 +51,7 @@ public class EnemyAI : NetworkBehaviour
         {
             if (timeToShoot <= 0)
             {
-                print("enemy hi");
+                //print("enemy hi");
                 CmdShoot();
             }
             else
@@ -97,7 +97,7 @@ public class EnemyAI : NetworkBehaviour
 
     void CmdShoot(){
         // shooting code
-        print("enemy Shoot");
+        //print("enemy Shoot");
         GameObject projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
         projectile.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         NetworkServer.Spawn(projectile);

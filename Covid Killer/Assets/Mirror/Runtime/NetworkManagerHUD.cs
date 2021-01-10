@@ -31,9 +31,12 @@ namespace Mirror
         /// </summary>
         public int offsetY;
 
+        private GameObject menu;
+
         void Awake()
         {
             manager = GetComponent<NetworkManager>();
+            menu = GameObject.FindGameObjectWithTag("Main Menu");
         }
 
         void OnGUI()
@@ -79,6 +82,8 @@ namespace Mirror
                 {
                     if (GUILayout.Button("Host (Server + Client)"))
                     {
+                        menu = GameObject.FindGameObjectWithTag("Main Menu");
+                        menu.SetActive(false);
                         manager.StartHost();
                     }
                 }
@@ -87,6 +92,8 @@ namespace Mirror
                 GUILayout.BeginHorizontal();
                 if (GUILayout.Button("Client"))
                 {
+                    menu = GameObject.FindGameObjectWithTag("Main Menu");
+                    menu.SetActive(false);
                     manager.StartClient();
                 }
                 manager.networkAddress = GUILayout.TextField(manager.networkAddress);
@@ -100,7 +107,13 @@ namespace Mirror
                 }
                 else
                 {
-                    if (GUILayout.Button("Server Only")) manager.StartServer();
+                    if (GUILayout.Button("Server Only"))
+                    {
+                        menu = GameObject.FindGameObjectWithTag("Main Menu");
+                        menu.SetActive(false);
+                        manager.StartServer();
+                    }
+                        
                 }
             }
             else
@@ -109,6 +122,7 @@ namespace Mirror
                 GUILayout.Label("Connecting to " + manager.networkAddress + "..");
                 if (GUILayout.Button("Cancel Connection Attempt"))
                 {
+                    menu.SetActive(true);
                     manager.StopClient();
                 }
             }
@@ -134,6 +148,7 @@ namespace Mirror
             {
                 if (GUILayout.Button("Stop Host"))
                 {
+                    menu.SetActive(true);
                     manager.StopHost();
                 }
             }
@@ -142,6 +157,7 @@ namespace Mirror
             {
                 if (GUILayout.Button("Stop Client"))
                 {
+                    menu.SetActive(true);
                     manager.StopClient();
                 }
             }
@@ -150,6 +166,7 @@ namespace Mirror
             {
                 if (GUILayout.Button("Stop Server"))
                 {
+                    menu.SetActive(true);
                     manager.StopServer();
                 }
             }
