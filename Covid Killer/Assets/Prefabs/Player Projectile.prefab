@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 1606706178810597153}
   - component: {fileID: 3283116244018809422}
   - component: {fileID: 4531601491462470710}
-  - component: {fileID: 6402760716951769501}
   - component: {fileID: -7936068244001658918}
   - component: {fileID: 8537893453315115138}
   - component: {fileID: 8964626245825319472}
+  - component: {fileID: 236077785172247808}
   m_Layer: 11
   m_Name: Player Projectile
   m_TagString: Untagged
@@ -97,22 +97,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6402760716951769501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2389430187597718828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3e299c726441840aadf444132d3087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  speedForce: 80
-  damage: 10
 --- !u!54 &-7936068244001658918
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -158,8 +142,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
-  syncInterval: 0
+  syncInterval: 0.1
   clientAuthority: 0
   localPositionSensitivity: 0.01
   localRotationSensitivity: 0.01
   localScaleSensitivity: 0.01
+--- !u!114 &236077785172247808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2389430187597718828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3e299c726441840aadf444132d3087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1

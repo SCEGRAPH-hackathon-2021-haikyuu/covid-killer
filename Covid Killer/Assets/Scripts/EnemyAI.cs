@@ -13,6 +13,7 @@ public class EnemyAI : NetworkBehaviour
     public bool shootPlayer = false;
     public float startTimeShoot = 1.5f;
     [SerializeField] private float timeToShoot = 0;
+    public float bulletSpeed = 40;
 
     public int dmgTouch = 10;
     public float startTimeTouch = 1f;
@@ -99,7 +100,7 @@ public class EnemyAI : NetworkBehaviour
         // shooting code
         print("enemy Shoot");
         GameObject projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
-        projectile.GetComponent<Projectile>().SetShootDir(lookDir);
+        projectile.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         NetworkServer.Spawn(projectile);
         timeToShoot = startTimeShoot;
     }

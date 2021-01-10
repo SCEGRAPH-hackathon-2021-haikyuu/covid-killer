@@ -4,33 +4,19 @@ using UnityEngine;
 using Mirror;
 
 public class Player : NetworkBehaviour {
-    public GameObject hpPrefab;
-
+    // Start is called before the first frame update
     public float movementSpeed;
     public float rotationSpeed;
 
     public float startTimeShoot = 0.3f;
     private float currentTimeShoot = 0f;
     public GameObject syringePrefab;
+    public float bulletSpeed = 40;
     private Vector3 lookDir = new Vector3(0,0,0);
-
-    private void Start()
-    {
-        foreach (GameObject g in GameObject.FindGameObjectsWithTag("HPSpawn"))
-        {
-            if (g.transform.childCount <= 0)
-            {
-                GameObject hpBar = Instantiate(hpPrefab, g.transform.position, g.transform.rotation);
-                hpBar.transform.parent = g.transform;
-                GetComponent<Unit>().SetHpBar(hpBar.GetComponent<HpBar>());
-                return;
-            }
-        }
-    }
 
     // Update is called once per frame
     void Update() {
-        if (this.isLocalPlayer)
+        if (this.isLocalPlayer || true)
         {
             // make player face mouse
             Plane playerPlane = new Plane(Vector3.up, transform.position);
@@ -85,7 +71,7 @@ public class Player : NetworkBehaviour {
         // shooting code
         print("Player shoot");
         GameObject projectile = Instantiate(syringePrefab, transform.position, transform.rotation);
-        projectile.GetComponent<Projectile>().SetShootDir(lookDir);
+        projectile.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         NetworkServer.Spawn(projectile);
         currentTimeShoot = startTimeShoot;
     }

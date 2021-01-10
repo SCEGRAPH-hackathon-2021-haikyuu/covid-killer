@@ -189,13 +189,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  hpPrefab: {fileID: 6028417343925513673, guid: 83046723b75fbd94a8214748f656bc65,
-    type: 3}
   movementSpeed: 40
   rotationSpeed: 10
   startTimeShoot: 0.3
   syringePrefab: {fileID: 2389430187597718828, guid: 091bf96bade24494fa731952c79c4e47,
     type: 3}
+  bulletSpeed: 40
 --- !u!114 &8577960052543306987
 MonoBehaviour:
   m_ObjectHideFlags: 0
