@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : Behaviour {
+public class Camera : MonoBehaviour {
     public Transform player;
     public float smooth = 0.3f;
     public float height;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveSpawner : MonoBehaviour
+public class WaveSpawner : NetworkBehaviour
 {
     public enum SpawnState { SPAWNING, WAITING, COUNTING};
 
@@ -31,7 +31,7 @@ public class WaveSpawner : MonoBehaviour
 
     private Transform lastSpawn;
 
-    private void Start()
+    private void OnStartServer()
     {
         if (spawnPointsStationary.Length <= 0)
         {
@@ -150,7 +150,8 @@ public class WaveSpawner : MonoBehaviour
             }
         }
 
-        Instantiate(_enemy, _sp.position, transform.rotation);
+        GameObject netEnemy = Instantiate(_enemy, _sp.position, transform.rotation);
+        NetworkServer.Spawn(netEnemy);
     }
 
     Transform ChooseSpawn(Transform[] spawns)

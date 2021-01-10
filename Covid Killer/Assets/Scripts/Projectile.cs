@@ -1,9 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class Projectile : MonoBehaviour
-{
+public class Projectile : NetworkBehaviour {
     public float speedForce = 20f;
     private Rigidbody rb;
 

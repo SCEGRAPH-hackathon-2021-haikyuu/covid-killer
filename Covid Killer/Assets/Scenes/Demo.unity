@@ -430,7 +430,9 @@ MonoBehaviour:
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 1
-  spawnPrefabs: []
+  spawnPrefabs:
+  - {fileID: 3165506352808809122, guid: 8d44f8ce94d073349ba891469db89342, type: 3}
+  - {fileID: 2389430187597718828, guid: 091bf96bade24494fa731952c79c4e47, type: 3}
 --- !u!4 &260603476
 Transform:
   m_ObjectHideFlags: 0
@@ -1042,6 +1044,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ec56a55963b604f82b96b195afdfa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  smooth: 0.3
+  height: 0
+  distance: 0
 --- !u!81 &854057737
 AudioListener:
   m_ObjectHideFlags: 0
