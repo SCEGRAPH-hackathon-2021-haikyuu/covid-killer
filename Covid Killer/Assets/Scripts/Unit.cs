@@ -33,8 +33,9 @@ public class Unit : NetworkBehaviour
         {
             if (gameObject.CompareTag("Player"))
             {
-                currentHp = maxHp;
-                RpcRespawn();
+                gameObject.SetActive(false);
+                //currentHp = maxHp;
+                //RpcRespawn();
             }
             else
             {
@@ -60,9 +61,12 @@ public class Unit : NetworkBehaviour
     }
 
     [ClientRpc]
-    void RpcRespawn()
+    public void RpcRespawn()
     {
-        this.transform.position = this.initialPosition;
+        gameObject.SetActive(true);
+        currentHp = maxHp;
+        hpBar.SetHp(currentHp);
+        transform.position = initialPosition;
     }
 
     public void TakeDmg(int dmg)

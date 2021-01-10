@@ -18,17 +18,17 @@ public class WaveSpawner : NetworkBehaviour
     }
 
     public Wave[] waves;
-    private int nextWave = 0;
+    public int nextWave = 0;
 
     public Transform[] spawnPointsStationary;
     public Transform[] spawnPointsChase;
 
     public float timeBetweenWaves = 5f;
-    private float waveCountdown;
+    public float waveCountdown;
 
     private float searchCountdown = 1f;
 
-    private SpawnState state = SpawnState.COUNTING;
+    public SpawnState state = SpawnState.COUNTING;
 
     private Transform lastSpawn;
 
@@ -83,8 +83,8 @@ public class WaveSpawner : NetworkBehaviour
         {
             print("All waves completed!");
             //nextWave = 0;
-            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().SetWin();
-            return;
+            /*GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().SetWin();
+            return;*/
         }
         else
         {

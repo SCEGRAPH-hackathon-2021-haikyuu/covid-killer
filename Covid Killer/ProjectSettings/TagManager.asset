@@ -8,6 +8,10 @@ TagManager:
   - Bullet
   - HPSpawn
   - GameManager
+  - Win
+  - Lose
+  - WinScreen
+  - LoseScreen
   layers:
   - Default
   - TransparentFX
