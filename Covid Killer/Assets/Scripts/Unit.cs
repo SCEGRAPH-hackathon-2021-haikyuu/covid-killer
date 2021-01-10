@@ -1,40 +1,68 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class Unit : MonoBehaviour
+public class Unit : NetworkBehaviour
 {
     public int maxHp = 100;
+
+    [SyncVar]
     public int currentHp;
 
     // Can be left Null for enemies
     public HpBar hpBar;
+
+    private Vector3 initialPosition;
     // Start is called before the first frame update
     void Start()
     {
         currentHp = maxHp;
 
-        if(gameObject.name == "Player1")
-        {
-            hpBar = GameObject.Find("P1 Health Bar").GetComponent<HpBar>();
-        }
-        else if (gameObject.name == "Player2")
-        {
-            hpBar = GameObject.Find("P2 Health Bar").GetComponent<HpBar>();
-        }
-
         if (hpBar != null)
         {
             hpBar.SetMaxHp(maxHp);
-        } 
+        }
+
+        initialPosition = transform.position;
     }
 
     void Update()
     {
-        if (currentHp <= 0)
+        if (this.currentHp <= 0)
         {
-            Destroy(gameObject);
+            if (gameObject.CompareTag("Player"))
+            {
+                currentHp = maxHp;
+                RpcRespawn();
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+            /*if (this.isClientOnly)
+            {
+                GameObject.Find("Network Manager").GetComponent<NetworkManager>().StopClient();
+            }
+            GameObject.Find("Game Manager").GetComponent<GameManager>().SetLose();*/
+            
+            /*if (transform.parent.GetComponent<Player>().isLocalPlayer)
+            {
+                Destroy(gameObject);
+                GameObject Otherplayer = GameObject.FindGameObjectWithTag("Player");
+                if(Otherplayer!= null)
+                {
+                    Transform cameraTransform = UnityEngine.Camera.main.gameObject.transform;
+                    cameraTransform.gameObject.GetComponent<Camera>().SetPlayer(Otherplayer.transform);
+                }
+            }*/
         }
+    }
+
+    [ClientRpc]
+    void RpcRespawn()
+    {
+        this.transform.position = this.initialPosition;
     }
 
     public void TakeDmg(int dmg)

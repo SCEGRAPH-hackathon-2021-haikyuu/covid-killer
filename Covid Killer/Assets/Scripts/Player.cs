@@ -16,16 +16,17 @@ public class Player : NetworkBehaviour {
 
     private void Start()
     {
-        foreach (GameObject g in GameObject.FindGameObjectsWithTag("HPSpawn"))
+        /*foreach (GameObject g in GameObject.FindGameObjectsWithTag("HPSpawn"))
         {
             if (g.transform.childCount <= 0)
             {
                 GameObject hpBar = Instantiate(hpPrefab, g.transform.position, g.transform.rotation);
                 hpBar.transform.parent = g.transform;
+                NetworkServer.Spawn(hpBar);
                 GetComponent<Unit>().SetHpBar(hpBar.GetComponent<HpBar>());
                 return;
             }
-        }
+        }*/
     }
 
     // Update is called once per frame

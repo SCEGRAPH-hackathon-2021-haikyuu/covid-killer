@@ -10,12 +10,12 @@ public class HpBar : NetworkBehaviour
 
     public void SetMaxHp(int hp)
     {
-        slider.maxValue = hp;
-        slider.value = hp;
+        this.slider.maxValue = hp;
+        this.slider.value = hp;
     }
 
     public void SetHp(int hp)
     {
-        slider.value = hp;
+        this.slider.value = hp;
     }
 }
