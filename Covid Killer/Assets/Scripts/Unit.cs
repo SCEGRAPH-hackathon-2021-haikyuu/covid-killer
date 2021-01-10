@@ -27,6 +27,7 @@ public class Unit : NetworkBehaviour
         initialPosition = transform.position;
     }
 
+    /*
     void Update()
     {
         if (this.currentHp <= 0)
@@ -40,7 +41,7 @@ public class Unit : NetworkBehaviour
             {
                 Destroy(gameObject);
             }
-            /*if (this.isClientOnly)
+            if (this.isClientOnly)
             {
                 GameObject.Find("Network Manager").GetComponent<NetworkManager>().StopClient();
             }
@@ -55,23 +56,21 @@ public class Unit : NetworkBehaviour
                     Transform cameraTransform = UnityEngine.Camera.main.gameObject.transform;
                     cameraTransform.gameObject.GetComponent<Camera>().SetPlayer(Otherplayer.transform);
                 }
-            }*/
+            }
         }
-    }
+    } 
+    */
 
     [ClientRpc]
-    void RpcRespawn()
-    {
-        this.transform.position = this.initialPosition;
-    }
-
     public void TakeDmg(int dmg)
     {
-        if (currentHp > 0)
-        {
-            currentHp -= dmg;
+        if(this.isServer) {
+            this.currentHp -= dmg;
             if (hpBar != null)
                 hpBar.SetHp(currentHp);
+            if(this.currentHp <= 0) {
+                Destroy(this.gameObject);
+            }
         }
     }
 
