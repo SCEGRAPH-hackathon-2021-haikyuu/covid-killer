@@ -8,6 +8,7 @@ public class GameManager : NetworkBehaviour
 {
     public GameObject winScreen;
     public GameObject loseScreen;
+    public GameObject music;
 
     public Transform winPos;
     public Transform losePos;
@@ -43,6 +44,8 @@ public class GameManager : NetworkBehaviour
     {
         over = true;
         print("Lose");
+        music.GetComponent<Music>().playDefeatMusic();
+        GameObject.Find("WaveManager").GetComponent<WaveSpawner>().battleMusicStarted = false;
         GameObject losePref = Instantiate(loseScreen, losePos.position, losePos.rotation);
         losePref.transform.parent = losePos;
         NetworkServer.Spawn(losePref);

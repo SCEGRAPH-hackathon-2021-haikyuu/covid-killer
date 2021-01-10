@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class Music : NetworkBehaviour
+public class Music : MonoBehaviour
 {
     public AudioSource menuMusic;
     public AudioSource battleMusic;
@@ -16,10 +16,6 @@ public class Music : NetworkBehaviour
         playMenuMusic();
     }
 
-    void OnStartServer() {
-        print("Play Battle Music");
-        playBattleMusic();
-    }
 
     public void playMenuMusic() {
         battleMusic.Stop();

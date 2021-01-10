@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
@@ -20,7 +20,7 @@ public class WaveSpawner : NetworkBehaviour
     }
 
     public Wave[] waves;
-    private bool musicStarted = false;
+    public bool battleMusicStarted = false;
     public int nextWave = 0;
 
     public Transform[] spawnPointsStationary;
@@ -85,9 +85,10 @@ public class WaveSpawner : NetworkBehaviour
         if(nextWave + 1 > waves.Length - 1)
         {
             print("All waves completed!");
+            
             //nextWave = 0;
-            /*GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().SetWin();
-            return;*/
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().SetWin();
+            return;
         }
         else
         {
@@ -139,8 +140,8 @@ public class WaveSpawner : NetworkBehaviour
 
         // Stationary Spawns are Default Spawn Points
         Transform _sp = ChooseSpawn(spawnPointsStationary);
-        if(nextWave == 0 && !musicStarted) {
-            this.playMusic();
+        if(nextWave == 0 && !battleMusicStarted) {
+            this.playBattleMusic();
         }
 
         if (nextWave == 1)
@@ -185,8 +186,14 @@ public class WaveSpawner : NetworkBehaviour
     }
 
     [ClientRpc]
-    void playMusic() {
+    void playBattleMusic() {
         music.GetComponent<Music>().playBattleMusic();
-        musicStarted = true;
+        battleMusicStarted = true;
+    }
+
+    [ClientRpc]
+    void playVictoryMusic() {
+        music.GetComponent<Music>().playVictoryMusic();
+        battleMusicStarted = false;
     }
 }
