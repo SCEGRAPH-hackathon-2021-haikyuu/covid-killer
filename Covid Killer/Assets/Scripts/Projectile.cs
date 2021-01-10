@@ -33,6 +33,7 @@ public class Projectile : NetworkBehaviour {
     private void OnCollisionEnter(Collision col)
     {
         //print(col.gameObject.name);
+        rb.velocity = Vector3.zero;
         if (col.gameObject.GetComponent<Unit>() != null)
         {
             col.gameObject.GetComponent<Unit>().TakeDmg(damage);
