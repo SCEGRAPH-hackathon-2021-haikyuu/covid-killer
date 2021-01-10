@@ -1042,6 +1042,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ec56a55963b604f82b96b195afdfa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  smooth: 0.3
+  height: 80
+  distance: 25
 --- !u!81 &854057737
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1803,7 +1807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1760145997
 MonoBehaviour:
   m_ObjectHideFlags: 0
