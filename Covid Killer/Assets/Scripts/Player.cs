@@ -4,7 +4,8 @@ using UnityEngine;
 using Mirror;
 
 public class Player : NetworkBehaviour {
-    // Start is called before the first frame update
+    public GameObject hpPrefab;
+
     public float movementSpeed;
     public float rotationSpeed;
 
@@ -12,6 +13,20 @@ public class Player : NetworkBehaviour {
     private float currentTimeShoot = 0f;
     public GameObject syringePrefab;
     private Vector3 lookDir = new Vector3(0,0,0);
+
+    private void Start()
+    {
+        foreach (GameObject g in GameObject.FindGameObjectsWithTag("HPSpawn"))
+        {
+            if (g.transform.childCount <= 0)
+            {
+                GameObject hpBar = Instantiate(hpPrefab, g.transform.position, g.transform.rotation);
+                hpBar.transform.parent = g.transform;
+                GetComponent<Unit>().SetHpBar(hpBar.GetComponent<HpBar>());
+                return;
+            }
+        }
+    }
 
     // Update is called once per frame
     void Update() {

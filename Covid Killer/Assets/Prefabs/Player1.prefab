@@ -189,6 +189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  hpPrefab: {fileID: 6028417343925513673, guid: 83046723b75fbd94a8214748f656bc65,
+    type: 3}
   movementSpeed: 40
   rotationSpeed: 10
   startTimeShoot: 0.3

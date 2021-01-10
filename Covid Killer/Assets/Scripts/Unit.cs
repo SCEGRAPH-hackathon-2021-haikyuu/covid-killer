@@ -46,4 +46,9 @@ public class Unit : MonoBehaviour
                 hpBar.SetHp(currentHp);
         }
     }
+
+    public void SetHpBar(HpBar bar)
+    {
+        hpBar = bar;
+    }
 }
