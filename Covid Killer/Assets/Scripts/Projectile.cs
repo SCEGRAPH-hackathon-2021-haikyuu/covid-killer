@@ -4,7 +4,7 @@ using UnityEngine;
 using Mirror;
 
 public class Projectile : NetworkBehaviour {
-    public float speedForce = 20f;
+    //public float speedForce = 20f;
     private Rigidbody rb;
 
     private Vector3 shootDir;
@@ -19,7 +19,7 @@ public class Projectile : NetworkBehaviour {
         /*if (rb != null)
             rb.AddForce(transform.forward * speedForce, ForceMode.Impulse);*/
     }
-
+    /*
     private void Update()
     {
         transform.position += shootDir * speedForce * Time.deltaTime;
@@ -29,7 +29,7 @@ public class Projectile : NetworkBehaviour {
     {
         this.shootDir = shootDir;
     }
-
+    */
     private void OnCollisionEnter(Collision col)
     {
         //print(col.gameObject.name);

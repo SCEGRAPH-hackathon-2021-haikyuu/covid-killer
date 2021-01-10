@@ -7,6 +7,8 @@ public class WaveSpawner : NetworkBehaviour
 {
     public enum SpawnState { SPAWNING, WAITING, COUNTING};
 
+    public GameObject music;
+
     [System.Serializable]
     public class Wave
     {
@@ -18,6 +20,7 @@ public class WaveSpawner : NetworkBehaviour
     }
 
     public Wave[] waves;
+    private bool musicStarted = false;
     public int nextWave = 0;
 
     public Transform[] spawnPointsStationary;
@@ -136,6 +139,9 @@ public class WaveSpawner : NetworkBehaviour
 
         // Stationary Spawns are Default Spawn Points
         Transform _sp = ChooseSpawn(spawnPointsStationary);
+        if(nextWave == 0 && !musicStarted) {
+            this.playMusic();
+        }
 
         if (nextWave == 1)
         {
@@ -176,5 +182,11 @@ public class WaveSpawner : NetworkBehaviour
         }
         lastSpawn = sp;
         return sp;
+    }
+
+    [ClientRpc]
+    void playMusic() {
+        music.GetComponent<Music>().playBattleMusic();
+        musicStarted = true;
     }
 }
