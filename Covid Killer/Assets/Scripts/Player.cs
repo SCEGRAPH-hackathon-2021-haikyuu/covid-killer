@@ -16,7 +16,7 @@ public class Player : NetworkBehaviour {
 
     private void Start()
     {
-        /*foreach (GameObject g in GameObject.FindGameObjectsWithTag("HPSpawn"))
+        foreach (GameObject g in GameObject.FindGameObjectsWithTag("HPSpawn"))
         {
             if (g.transform.childCount <= 0)
             {
@@ -26,7 +26,7 @@ public class Player : NetworkBehaviour {
                 GetComponent<Unit>().SetHpBar(hpBar.GetComponent<HpBar>());
                 return;
             }
-        }*/
+        }
     }
 
     // Update is called once per frame
