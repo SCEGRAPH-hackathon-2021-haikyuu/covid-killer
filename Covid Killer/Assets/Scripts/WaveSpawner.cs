@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 public class WaveSpawner : NetworkBehaviour
 {
@@ -150,8 +151,8 @@ public class WaveSpawner : NetworkBehaviour
             }
         }
 
-        GameObject netEnemy = Instantiate(_enemy, _sp.position, transform.rotation);
-        NetworkServer.Spawn(netEnemy);
+        //GameObject enemy = Instantiate(_enemy, _sp.position, transform.rotation);
+        //NetworkServer.Spawn(enemy);
     }
 
     Transform ChooseSpawn(Transform[] spawns)
