@@ -14,6 +14,7 @@ public class Player : NetworkBehaviour {
     private float currentTimeShoot = 0f;
     public GameObject syringePrefab;
     private Vector3 lookDir = new Vector3(0,0,0);
+    private Rigidbody rb;
 
     private void Start()
     {
@@ -30,8 +31,18 @@ public class Player : NetworkBehaviour {
         }
     }
 
+    void Awake()
+    {
+        if (gameObject.GetComponent<Rigidbody>() != null)
+            rb = gameObject.GetComponent<Rigidbody>();
+
+        /*if (rb != null)
+            rb.AddForce(transform.forward * speedForce, ForceMode.Impulse);*/
+    }
+
     // Update is called once per frame
     void Update() {
+        rb.velocity = Vector3.zero;
         if (this.isLocalPlayer)
         {
             // make player face mouse
