@@ -68,6 +68,7 @@ public class Player : NetworkBehaviour {
     [Command]
     void CmdShoot() {
         // shooting code
+        print("Player shoot");
         GameObject projectile = Instantiate(syringePrefab, transform.position, transform.rotation);
         projectile.GetComponent<Projectile>().SetShootDir(lookDir);
         NetworkServer.Spawn(projectile);
