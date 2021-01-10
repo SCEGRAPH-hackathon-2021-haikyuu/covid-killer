@@ -245,8 +245,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58e9799c9e73d24480ad576a5fe1147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   movementSpeed: 10
   rotationSpeed: 10
+  startTimeShoot: 0.3
+  syringePrefab: {fileID: 0}
 --- !u!54 &523278646
 Rigidbody:
   m_ObjectHideFlags: 0

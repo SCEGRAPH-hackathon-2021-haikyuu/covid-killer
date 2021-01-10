@@ -14,7 +14,7 @@ public class Player : NetworkBehaviour {
     private Vector3 lookDir = new Vector3(0,0,0);
 
     // Update is called once per frame
-    void FixedUpdate() {
+    void Update() {
         if (this.isLocalPlayer)
         {
             // make player face mouse
