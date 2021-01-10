@@ -1449,7 +1449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 98.5, y: -39.699997}
+  m_AnchoredPosition: {x: 98.5, y: -1135}
   m_SizeDelta: {x: 136.90292, y: 27.567627}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1516560138
@@ -1484,7 +1484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 98.5, y: -89.9}
+  m_AnchoredPosition: {x: 98.5, y: -1227}
   m_SizeDelta: {x: 136.90292, y: 27.567627}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1674310030
@@ -1648,6 +1648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  music: {fileID: 0}
   waves:
   - name: Stationaries
     enemies:

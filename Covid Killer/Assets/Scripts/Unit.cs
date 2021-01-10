@@ -13,6 +13,7 @@ public class Unit : NetworkBehaviour
     // Can be left Null for enemies
     public HpBar hpBar;
 
+
     private Vector3 initialPosition;
     // Start is called before the first frame update
     void Start()
@@ -78,7 +79,13 @@ public class Unit : NetworkBehaviour
             if (hpBar != null)
                 hpBar.SetHp(currentHp);
             if(this.currentHp <= 0) {
-                Destroy(this.gameObject);
+                if (gameObject.CompareTag("Player")) {
+                    gameObject.SetActive(false);
+                    //currentHp = maxHp;
+                    //RpcRespawn();
+                } else {
+                    Destroy(this.gameObject);
+                }
             }
         }
     }
