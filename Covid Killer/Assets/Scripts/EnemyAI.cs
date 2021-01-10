@@ -100,7 +100,7 @@ public class EnemyAI : NetworkBehaviour
         // shooting code
         print("enemy Shoot");
         GameObject projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
-        projectile.GetComponent<Projectile>().SetShootDir(lookDir);
+        projectile.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         NetworkServer.Spawn(projectile);
         timeToShoot = startTimeShoot;
     }
