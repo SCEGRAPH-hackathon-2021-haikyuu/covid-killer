@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Mirror;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : NetworkBehaviour
 {
     private NavMeshAgent enemy;
     [SerializeField]private GameObject[] players;
@@ -49,9 +50,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (timeToShoot <= 0)
             {
-                GameObject projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
-                projectile.GetComponent<Projectile>().SetShootDir(lookDir);
-                timeToShoot = startTimeShoot;
+                CmdShoot();
             }
             else
             {
@@ -92,5 +91,14 @@ public class EnemyAI : MonoBehaviour
         {
             timeToTouch -= Time.deltaTime;
         }
+    }
+
+    [Command]
+    void CmdShoot() {
+        // shooting code
+        GameObject projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
+        projectile.GetComponent<Projectile>().SetShootDir(lookDir);
+        NetworkServer.Spawn(projectile);
+        timeToShoot = startTimeShoot;
     }
 }

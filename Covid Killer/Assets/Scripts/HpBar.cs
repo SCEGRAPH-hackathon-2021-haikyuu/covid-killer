@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
-public class HpBar : MonoBehaviour
+public class HpBar : NetworkBehaviour
 {
     public Slider slider;
 

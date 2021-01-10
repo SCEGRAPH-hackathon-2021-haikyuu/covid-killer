@@ -50,13 +50,12 @@ public class Player : NetworkBehaviour {
                 transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
             }
 
+            // shooting code
             if (currentTimeShoot <= 0)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    GameObject projectile = Instantiate(syringePrefab, transform.position, transform.rotation);
-                    projectile.GetComponent<Projectile>().SetShootDir(lookDir);
-                    currentTimeShoot = startTimeShoot;
+                    this.CmdShoot();
                 }
             }
             else
@@ -64,5 +63,14 @@ public class Player : NetworkBehaviour {
                 currentTimeShoot -= Time.deltaTime;
             }
         }
+    }
+
+    [Command]
+    void CmdShoot() {
+        // shooting code
+        GameObject projectile = Instantiate(syringePrefab, transform.position, transform.rotation);
+        projectile.GetComponent<Projectile>().SetShootDir(lookDir);
+        NetworkServer.Spawn(projectile);
+        currentTimeShoot = startTimeShoot;
     }
 }
