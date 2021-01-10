@@ -50,6 +50,7 @@ public class EnemyAI : NetworkBehaviour
         {
             if (timeToShoot <= 0)
             {
+                print("hi");
                 CmdShoot();
             }
             else
@@ -96,6 +97,7 @@ public class EnemyAI : NetworkBehaviour
     [Command]
     void CmdShoot() {
         // shooting code
+        print("Shoot");
         GameObject projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
         projectile.GetComponent<Projectile>().SetShootDir(lookDir);
         NetworkServer.Spawn(projectile);

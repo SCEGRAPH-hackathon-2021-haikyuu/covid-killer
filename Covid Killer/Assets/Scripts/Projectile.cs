@@ -32,12 +32,12 @@ public class Projectile : NetworkBehaviour {
 
     private void OnCollisionEnter(Collision col)
     {
-        print(col.gameObject.name);
+        //print(col.gameObject.name);
         if (col.gameObject.GetComponent<Unit>() != null)
         {
-            print(col.gameObject.name);
             col.gameObject.GetComponent<Unit>().TakeDmg(damage);
         }
         Destroy(gameObject);
+        //print("dead");
     }
 }

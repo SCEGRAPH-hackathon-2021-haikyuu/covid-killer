@@ -11,7 +11,7 @@ public class WaveSpawner : NetworkBehaviour
     public class Wave
     {
         public string name;
-        public Transform[] enemies;
+        public GameObject[] enemies;
         public int count;
         public float rate;
 
@@ -120,13 +120,13 @@ public class WaveSpawner : NetworkBehaviour
         yield break;
     }
 
-    Transform ChooseEnemy(Transform[] e)
+    GameObject ChooseEnemy(GameObject[] e)
     {
-        Transform enemy = e[Random.Range(0, e.Length)];
+        GameObject enemy = e[Random.Range(0, e.Length)];
         return enemy;
     }
 
-    void SpawnEnemy(Transform _enemy)
+    void SpawnEnemy(GameObject _enemy)
     {
         //Spawn Enemy
         print("Spawning Enemy: " + _enemy.name);
@@ -151,8 +151,8 @@ public class WaveSpawner : NetworkBehaviour
             }
         }
 
-        //GameObject enemy = Instantiate(_enemy, _sp.position, transform.rotation);
-        //NetworkServer.Spawn(enemy);
+        GameObject enemy = Instantiate(_enemy, _sp.position, transform.rotation);
+        NetworkServer.Spawn(enemy);
     }
 
     Transform ChooseSpawn(Transform[] spawns)

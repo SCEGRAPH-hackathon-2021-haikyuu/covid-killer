@@ -572,6 +572,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d2361abfdae3541a8c8acf2cfc3a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   slider: {fileID: 517398226}
 --- !u!114 &517398226
 MonoBehaviour:
@@ -818,6 +820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d2361abfdae3541a8c8acf2cfc3a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   slider: {fileID: 741269425}
 --- !u!114 &741269425
 MonoBehaviour:
@@ -1616,6 +1620,8 @@ RectTransform:
   m_Children:
   - {fileID: 517398224}
   - {fileID: 741269423}
+  - {fileID: 1331695006}
+  - {fileID: 1516560139}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1699,6 +1705,76 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1225984947}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1331695005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1331695006}
+  m_Layer: 5
+  m_Name: Hp1 Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1331695006
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331695005}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1216812073}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 98.5, y: -39.699997}
+  m_SizeDelta: {x: 136.90292, y: 27.567627}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1516560138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1516560139}
+  m_Layer: 5
+  m_Name: Hp2 Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1516560139
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516560138}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1216812073}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 98.5, y: -89.9}
+  m_SizeDelta: {x: 136.90292, y: 27.567627}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1674310030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,7 +1886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1760145997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1823,21 +1899,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b47055bc1616b46b71ca0b626b68d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   waves:
   - name: Stationaries
     enemies:
-    - {fileID: 2407931327245595259, guid: f8b1c8949cf456d48bf98d0d8c5936b3, type: 3}
+    - {fileID: 2407931327245595248, guid: f8b1c8949cf456d48bf98d0d8c5936b3, type: 3}
     count: 4
     rate: 2
   - name: Chasers
     enemies:
-    - {fileID: 4054074535566434603, guid: b6c62cbd19c9d994fbec57863983dd95, type: 3}
+    - {fileID: 4054074535566434592, guid: b6c62cbd19c9d994fbec57863983dd95, type: 3}
     count: 8
     rate: 1
   - name: Chasers & Stationaries
     enemies:
-    - {fileID: 4054074535566434603, guid: b6c62cbd19c9d994fbec57863983dd95, type: 3}
-    - {fileID: 2407931327245595259, guid: f8b1c8949cf456d48bf98d0d8c5936b3, type: 3}
+    - {fileID: 4054074535566434592, guid: b6c62cbd19c9d994fbec57863983dd95, type: 3}
+    - {fileID: 2407931327245595248, guid: f8b1c8949cf456d48bf98d0d8c5936b3, type: 3}
     count: 5
     rate: 1.5
   spawnPointsStationary:
