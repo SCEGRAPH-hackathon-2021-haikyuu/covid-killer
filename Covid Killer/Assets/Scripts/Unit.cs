@@ -38,7 +38,7 @@ public class Unit : NetworkBehaviour
             }
             else
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
             /*if (this.isClientOnly)
             {

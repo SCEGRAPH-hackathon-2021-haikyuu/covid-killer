@@ -10,7 +10,15 @@ public class CameraMountPoint : MonoBehaviour
     {
         if (transform.parent.GetComponent<Player>().isLocalPlayer)
         {
-            transform.parent.name = "Player" + Random.Range(0.0f, 1.0f);
+            if (!GameObject.Find("Player1"))
+            {
+                transform.parent.name = "Player 1";
+            }
+            else
+            {
+                transform.parent.name = "Player 2";
+            }
+            //transform.parent.name = "Player" + Random.Range(0.0f, 1.0f);
             Transform cameraTransform = UnityEngine.Camera.main.gameObject.transform;  //Find main camera which is part of the scene instead of the prefab
             /*cameraTransform.parent = MountPoint.transform;  //Make the camera a child of the mount point
             cameraTransform.position = MountPoint.transform.position;  //Set position/rotation same as the mount point

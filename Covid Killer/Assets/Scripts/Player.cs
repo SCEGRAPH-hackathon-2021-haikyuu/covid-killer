@@ -86,7 +86,9 @@ public class Player : NetworkBehaviour {
         // shooting code
         print("Player shoot");
         GameObject projectile = Instantiate(syringePrefab, transform.position, transform.rotation);
+        //print(lookDir);
         projectile.GetComponent<Projectile>().SetShootDir(lookDir);
+        //projectile.GetComponent<Projectile>().SetShootDir(new Vector3(1,1,1));
         NetworkServer.Spawn(projectile);
         currentTimeShoot = startTimeShoot;
     }

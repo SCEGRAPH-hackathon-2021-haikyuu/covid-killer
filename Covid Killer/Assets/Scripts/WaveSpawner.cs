@@ -82,9 +82,9 @@ public class WaveSpawner : NetworkBehaviour
         if(nextWave + 1 > waves.Length - 1)
         {
             print("All waves completed!");
-            nextWave = 0;
-            /*GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().SetWin();
-            return;*/
+            //nextWave = 0;
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().SetWin();
+            return;
         }
         else
         {
